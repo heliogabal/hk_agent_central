@@ -21,8 +21,8 @@ function hk_agent_central_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => '/crm-core/agent-central
-/crm-core/agent-central/*',
+    'pages' => 'crm-core/agent-central
+crm-core/agent-central/*',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
@@ -38,8 +38,8 @@ function hk_agent_central_default_fe_block_settings() {
         'weight' => 0,
       ),
       'hk_theme' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'content',
+        'status' => 1,
         'theme' => 'hk_theme',
         'weight' => 0,
       ),
@@ -64,7 +64,9 @@ function hk_agent_central_default_fe_block_settings() {
     'module' => 'views',
     'node_types' => array(),
     'pages' => '/crm-core/agent-central
-/crm-core/agent-central/*',
+crm-core/agent-central
+/crm-core/agent-central/*
+crm-core/agent-central/*',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
@@ -86,8 +88,8 @@ function hk_agent_central_default_fe_block_settings() {
         'weight' => 0,
       ),
       'seven' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'content',
+        'status' => 1,
         'theme' => 'seven',
         'weight' => 0,
       ),

@@ -143,7 +143,7 @@ function hk_agent_central_views_default_views() {
   $handler->display->display_options['fields']['edit_crm_activity']['table'] = 'crm_core_activity';
   $handler->display->display_options['fields']['edit_crm_activity']['field'] = 'edit_crm_activity';
   $handler->display->display_options['fields']['edit_crm_activity']['relationship'] = 'reverse_field_activity_participants_crm_core_activity';
-  $handler->display->display_options['fields']['edit_crm_activity']['label'] = 'Action';
+  $handler->display->display_options['fields']['edit_crm_activity']['label'] = 'Aktion';
   $handler->display->display_options['fields']['edit_crm_activity']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['edit_crm_activity']['alter']['text'] = '<a href="/task" class="ng-lightbox">Create Task</a> | <a href="/email" class="ng-lightbox">Send Email</a> | <a href="/meeting" class="ng-lightbox">Schedule Meeting</a>';
   $handler->display->display_options['fields']['edit_crm_activity']['redirect'] = 0;
@@ -152,16 +152,6 @@ function hk_agent_central_views_default_views() {
   $handler->display->display_options['sorts']['field_activity_date_value']['table'] = 'field_data_field_activity_date';
   $handler->display->display_options['sorts']['field_activity_date_value']['field'] = 'field_activity_date_value';
   $handler->display->display_options['sorts']['field_activity_date_value']['relationship'] = 'reverse_field_activity_participants_crm_core_activity';
-  /* Kontextfilter: CRM Core Kontakt: Primärer Ansprechpartner (field_crm_ansprechpartner) */
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['id'] = 'field_crm_ansprechpartner_target_id';
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['table'] = 'field_data_field_crm_ansprechpartner';
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['field'] = 'field_crm_ansprechpartner_target_id';
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['exception']['title'] = 'Alle';
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['default_argument_type'] = 'current_user';
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_crm_ansprechpartner_target_id']['summary_options']['items_per_page'] = '25';
   /* Filterkriterium: CRM Core Kontakt: Kontakttyp */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'crm_core_contact';
@@ -253,6 +243,19 @@ function hk_agent_central_views_default_views() {
   $handler->display->display_options['style_options']['theme_style'] = '1';
   $handler->display->display_options['style_options']['max_items'] = '0';
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
+  /* Feld: CRM Core Aktivität: Titel */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'crm_core_activity';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Feld: CRM Core Aktivität: Meeting Type */
+  $handler->display->display_options['fields']['field_meeting_type']['id'] = 'field_meeting_type';
+  $handler->display->display_options['fields']['field_meeting_type']['table'] = 'field_data_field_meeting_type';
+  $handler->display->display_options['fields']['field_meeting_type']['field'] = 'field_meeting_type';
+  $handler->display->display_options['fields']['field_meeting_type']['label'] = '';
+  $handler->display->display_options['fields']['field_meeting_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_meeting_type']['type'] = 'taxonomy_term_reference_rss_category';
   /* Feld: CRM Core Aktivität: Date */
   $handler->display->display_options['fields']['field_activity_date']['id'] = 'field_activity_date';
   $handler->display->display_options['fields']['field_activity_date']['table'] = 'field_data_field_activity_date';
@@ -270,22 +273,31 @@ function hk_agent_central_views_default_views() {
   );
   $handler->display->display_options['fields']['field_activity_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_activity_date']['delta_offset'] = '0';
+  /* Feld: CRM Core Aktivität: Notes */
+  $handler->display->display_options['fields']['field_activity_notes']['id'] = 'field_activity_notes';
+  $handler->display->display_options['fields']['field_activity_notes']['table'] = 'field_data_field_activity_notes';
+  $handler->display->display_options['fields']['field_activity_notes']['field'] = 'field_activity_notes';
+  $handler->display->display_options['fields']['field_activity_notes']['label'] = '';
+  $handler->display->display_options['fields']['field_activity_notes']['element_label_colon'] = FALSE;
+  /* Feld: CRM Core Aktivität: Participants */
+  $handler->display->display_options['fields']['field_activity_participants']['id'] = 'field_activity_participants';
+  $handler->display->display_options['fields']['field_activity_participants']['table'] = 'field_data_field_activity_participants';
+  $handler->display->display_options['fields']['field_activity_participants']['field'] = 'field_activity_participants';
+  $handler->display->display_options['fields']['field_activity_participants']['label'] = 'Teilnehmer';
+  $handler->display->display_options['fields']['field_activity_participants']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_activity_participants']['delta_offset'] = '0';
+  /* Feld: CRM Core Aktivität: Date */
+  $handler->display->display_options['fields']['field_activity_date_1']['id'] = 'field_activity_date_1';
+  $handler->display->display_options['fields']['field_activity_date_1']['table'] = 'field_data_field_activity_date';
+  $handler->display->display_options['fields']['field_activity_date_1']['field'] = 'field_activity_date';
+  $handler->display->display_options['fields']['field_activity_date_1']['label'] = 'Datum';
   /* Sortierkriterien: CRM Core Aktivität: Date (field_activity_date) */
   $handler->display->display_options['sorts']['field_activity_date_value']['id'] = 'field_activity_date_value';
   $handler->display->display_options['sorts']['field_activity_date_value']['table'] = 'field_data_field_activity_date';
   $handler->display->display_options['sorts']['field_activity_date_value']['field'] = 'field_activity_date_value';
-  /* Kontextfilter: CRM Core Aktivität: Participants (field_activity_participants) */
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['id'] = 'field_activity_participants_target_id';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['table'] = 'field_data_field_activity_participants';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['field'] = 'field_activity_participants_target_id';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['exception']['title'] = 'Alle';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['title'] = 'Termine für %1';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['default_argument_type'] = 'current_user';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_activity_participants_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['sorts']['field_activity_date_value']['order'] = 'DESC';
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_1');
@@ -296,11 +308,12 @@ function hk_agent_central_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'calendar_style';
   $handler->display->display_options['style_options']['name_size'] = '3';
-  $handler->display->display_options['style_options']['mini'] = '0';
-  $handler->display->display_options['style_options']['with_weekno'] = '0';
+  $handler->display->display_options['style_options']['mini'] = '1';
+  $handler->display->display_options['style_options']['with_weekno'] = '1';
   $handler->display->display_options['style_options']['multiday_theme'] = '1';
   $handler->display->display_options['style_options']['theme_style'] = '1';
-  $handler->display->display_options['style_options']['max_items'] = '0';
+  $handler->display->display_options['style_options']['max_items'] = '1';
+  $handler->display->display_options['style_options']['max_items_behavior'] = 'hide';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
@@ -510,6 +523,69 @@ function hk_agent_central_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Feld: CRM Core Aktivität: Titel */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'crm_core_activity';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Feld: CRM Core Aktivität: Meeting Type */
+  $handler->display->display_options['fields']['field_meeting_type']['id'] = 'field_meeting_type';
+  $handler->display->display_options['fields']['field_meeting_type']['table'] = 'field_data_field_meeting_type';
+  $handler->display->display_options['fields']['field_meeting_type']['field'] = 'field_meeting_type';
+  $handler->display->display_options['fields']['field_meeting_type']['label'] = '';
+  $handler->display->display_options['fields']['field_meeting_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_meeting_type']['type'] = 'taxonomy_term_reference_rss_category';
+  /* Feld: CRM Core Aktivität: Date */
+  $handler->display->display_options['fields']['field_activity_date']['id'] = 'field_activity_date';
+  $handler->display->display_options['fields']['field_activity_date']['table'] = 'field_data_field_activity_date';
+  $handler->display->display_options['fields']['field_activity_date']['field'] = 'field_activity_date';
+  $handler->display->display_options['fields']['field_activity_date']['label'] = '';
+  $handler->display->display_options['fields']['field_activity_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_activity_date']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_activity_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => '',
+  );
+  $handler->display->display_options['fields']['field_activity_date']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_activity_date']['delta_offset'] = '0';
+  /* Feld: CRM Core Aktivität: Notes */
+  $handler->display->display_options['fields']['field_activity_notes']['id'] = 'field_activity_notes';
+  $handler->display->display_options['fields']['field_activity_notes']['table'] = 'field_data_field_activity_notes';
+  $handler->display->display_options['fields']['field_activity_notes']['field'] = 'field_activity_notes';
+  $handler->display->display_options['fields']['field_activity_notes']['label'] = '';
+  $handler->display->display_options['fields']['field_activity_notes']['element_label_colon'] = FALSE;
+  /* Feld: CRM Core Aktivität: Participants */
+  $handler->display->display_options['fields']['field_activity_participants']['id'] = 'field_activity_participants';
+  $handler->display->display_options['fields']['field_activity_participants']['table'] = 'field_data_field_activity_participants';
+  $handler->display->display_options['fields']['field_activity_participants']['field'] = 'field_activity_participants';
+  $handler->display->display_options['fields']['field_activity_participants']['label'] = 'Teilnehmer';
+  $handler->display->display_options['fields']['field_activity_participants']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_activity_participants']['delta_offset'] = '0';
+  /* Feld: CRM Core Aktivität: Date */
+  $handler->display->display_options['fields']['field_activity_date_1']['id'] = 'field_activity_date_1';
+  $handler->display->display_options['fields']['field_activity_date_1']['table'] = 'field_data_field_activity_date';
+  $handler->display->display_options['fields']['field_activity_date_1']['field'] = 'field_activity_date';
+  $handler->display->display_options['fields']['field_activity_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_activity_date_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_activity_date_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_activity_date_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_activity_date_1']['settings'] = array(
+    'format_type' => 'search_api_facetapi_DAY',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filterkriterium: Datum: Datum (crm_core_activity) */
@@ -521,6 +597,13 @@ function hk_agent_central_views_default_views() {
   $handler->display->display_options['filters']['date_filter']['add_delta'] = 'yes';
   $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
     'field_data_field_activity_date.field_activity_date_value' => 'field_data_field_activity_date.field_activity_date_value',
+  );
+  /* Filterkriterium: CRM Core Aktivität: Typ */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'crm_core_activity';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'meeting' => 'meeting',
   );
   $export['calendar'] = $view;
 
@@ -537,6 +620,7 @@ function hk_agent_central_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'To-do';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mehr';
   $handler->display->display_options['access']['type'] = 'role';
@@ -618,7 +702,7 @@ function hk_agent_central_views_default_views() {
   $handler->display->display_options['block_description'] = 'To-do Liste';
 
   /* Display: Seite */
-  $handler = $view->new_display('page', 'Seite', 'page_1');
+  $handler = $view->new_display('page', 'Seite', 'page_todo');
   $handler->display->display_options['path'] = 'crm-core/todo';
   $export['to_do'] = $view;
 
